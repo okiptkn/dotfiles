@@ -1,0 +1,11 @@
+! Rofi
+! bg, fg, bgalt, hlbg, hlfg
+! rofi.color-normal: argb:ff141414, #383838, argb:001e1e1e, #171717,#bdb8c1
+! rofi.color-normal: #373737, #828282, argb:001e1e1e, #504E4E,#D6D3D2
+! rofi.color-urgent: argb:ff141414, #c2c2c2, argb:001e1e1e, #171717,#bdb8c1
+! rofi.color-active: argb:ff141414, #8b4779, argb:001e1e1e, #171717,#bdb8c1
+! rofi.color-window: #373737, #000,#fbdeff
+! rofi.color-window: argb:D91d2021, argb:BF000000, argb:BFfbdeff
+! rofi.color-normal: argb:00373737, argb:FF828282, argb:001e1e1e, argb:00504E4E, argb:FFD6D3D2
+! rofi.color-normal: argb:00373737, argb:FF828282, argb:001e1e1e, argb:00504E4E, argb:FFEF6762
+
