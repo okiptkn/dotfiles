@@ -1,0 +1,69 @@
+##### song format #####
+##
+## for song format you can use:
+##
+## %l - length
+## %f - filename
+## %D - directory
+## %a - artist
+## %A - album artist
+## %t - title
+## %b - album
+## %y - year
+## %n - track number (01/12 -> 01)
+## %N - full track info (01/12 -> 01/12)
+## %g - genre
+## %c - composer
+## %p - performer
+## %d - disc
+## %C - comment
+## $R - begin right alignment
+
+
+    r - repeat mode [r-----]
+    z - random mode [-z----]
+    y - single mode [--s---] (Repeats the current track after reaching the end.)
+    R - consume mode [---c--] (Removes the current track from playlist after reaching the end.)
+    x - crossfade mode [----x-]
+    
+    ifferent views
+
+Partial list of views within ncmpcpp:
+
+    1 - Current playlist
+    2 - Filesystem browser
+    3 - DB search
+    4 - Library
+    5 - Playlist editor
+    6 - Tag editor (very powerful!)
+    7 - Output selector
+    8 - Music visualizer
+    = - Clock
+    F1 - Help
+
+Other UI keys
+
+    q - Quit
+    f - Seek forward
+    b - Seek backward
+    \ - Switch between classic and alternative views
+    # - Display bitrate of file
+    i - Show song info
+    I - Show artist info (saved in ~/.ncmpcpp/artists/ARTIST.txt)
+    L - Shuffle between available lyric databases
+    l - Retrieve song lyrics for current song Show/hide lyrics
+    > - Next track
+    < - Previous track
+    p - Play/Pause
+    + - Increase volume 2%
+    - - Decrease volume 2%
+
+#●┃
+#▄
+#█▀
+#●▮
+#◆▋
+#☆★
+#★ ★ ★ ☆ ☆
+#★ ★ ★ ★ ☆
+#★ ★ ★ ★ ★
