@@ -1,0 +1,19 @@
+gtk-color-scheme = "background: #eee8d5"		#F3EFD4
+gtk-color-scheme = "foreground: #6c5e5e"
+
+gtk-color-scheme = "color0: #eee8d5"
+gtk-color-scheme = "color1: #FF8787"
+gtk-color-scheme = "color2: #8A6D70"
+gtk-color-scheme = "color3: #F09A98"
+gtk-color-scheme = "color4: #CFD0CF"
+gtk-color-scheme = "color5: #DFE0DF"
+gtk-color-scheme = "color6: #E7E7E7"
+gtk-color-scheme = "color7: #FF8787"
+gtk-color-scheme = "color8: #B5A3A4"
+gtk-color-scheme = "color9: #8A6D70"
+gtk-color-scheme = "color10: #cfd0cf"
+gtk-color-scheme = "color11: #F09A98"
+gtk-color-scheme = "color12: #8A6D70"
+gtk-color-scheme = "color13: #8A6D70"
+gtk-color-scheme = "color14: #D1B890"		#AE8C90		#E1C79F
+gtk-color-scheme = "color15: #FF8787"
