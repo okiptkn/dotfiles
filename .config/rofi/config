@@ -1,20 +1,20 @@
 !-------------------------------------------
 ! rofi
 
-rofi.lines:                         	  4
+rofi.lines:                       4
 rofi.color-enabled:               true
 rofi.separator-style:             none 
-!rofi.width:                        	  33
-rofi.width:                            100
-rofi.padding:             	          500
-rofi.bw:                  		          0
-rofi.line-padding:                 6
-rofi.hide-scrollbar:               True
+!rofi.width:                      33
+rofi.width:                       100
+rofi.padding:             	      500
+rofi.bw:                  		    0
+rofi.line-padding:                6
+rofi.hide-scrollbar:              True
 rofi.columns:  	                  1
-rofi.location:	                      0
-!rofi.theme-str:					 #prompt {enabled: false; }
-rofi.display-run:					   run
-rofi.display-window:			   window
+rofi.location:	                  0
+!rofi.theme-str:					        #prompt {enabled: false; }
+rofi.display-run:					         run
+rofi.display-window:			         window
 
 ! colors
 ! bg, fg, bgalt, hlbg, hlfg
