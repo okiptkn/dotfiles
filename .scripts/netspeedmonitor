@@ -29,7 +29,7 @@ _netw() {
 
   # rx = downspeed
   # tx = upspeed
-   echo "up $up kBps |  down $down kBps"
+   echo "up $up kBps | down $down kBps"
   }   
 
 _pipetolemon() {
