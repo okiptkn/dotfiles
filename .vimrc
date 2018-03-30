@@ -178,7 +178,7 @@ syntax enable
 "let g:solarized_termcolors=256
 colorscheme solarized_dwm
 
-" work around in case you using a terminal with white/light colored bg in
+" work around in case you are using terminal with white/light colored bg in
 " contrast of tty's black bg
 if &term=~'linux'
     set background=dark
