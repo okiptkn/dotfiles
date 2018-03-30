@@ -38,8 +38,8 @@ ldir() {
 }
 
 # set color indicators
-succ='%F{210}'
-fail='%F{95}'
+succ='%F{cyan}'
+fail='%F{yellow}'
 
 # git prompt
 git_prompt() {

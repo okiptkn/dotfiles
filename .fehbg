@@ -1,0 +1,2 @@
+#!/bin/sh
+'feh' '--bg-fill' '/home/okiptkn/.backgrounds/.jpeg/17.jpeg' 

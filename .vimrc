@@ -177,7 +177,20 @@ set foldmethod=manual
 syntax enable
 "let g:solarized_termcolors=256
 colorscheme solarized_dwm
-set background=light
+
+" work around in case you using a terminal with white/light colored bg in
+" contrast of tty's black bg
+if &term=~'linux'
+    set background=dark
+  elseif &term=~'st-256color' " replace with your $TERM
+    set background=light
+endif
+
+"" MRU config, replace default F1 <help>
+let MRU_Max_Entries = 100
+let MRU_Max_Menu_Entries = 10
+let MRU_Auto_Close = 0
+map <F1> :MRUToggle<CR>
 
 "" NERDTree Configuration
 let NERDTreeChDirMode = 2
