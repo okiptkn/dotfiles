@@ -1,0 +1,69 @@
+#!/bin/sh
+#
+
+# [sclauncher] dmenu script launcher, see {sclauncer -h] for help/usage
+
+ldscript() {
+    if [[ -z $script ]]; then
+        echo "error : missing arguments. see '-h' or '--help' for help"
+        return 1
+    fi
+
+    if which $script &>/dev/null; then
+        if [[ -L $HOME/.scripts/cache/$link ]]; then
+            echo "sclaunch : error : \"$link\" script already loaded"
+            return 1
+        else
+            ln -s $(which $script) $HOME/.scripts/cache/$link
+            return 0
+    fi
+else
+    echo "sclauncher : error : \"$link\" not found in $PATH"
+    return 1
+fi
+}
+
+rmscript() {
+    if [[ -L $HOME/.scripts/cache/$script ]]; then
+        rm -f $HOME/.scripts/cache/$script
+        return 0
+    else
+        echo "sclaunch : error : \"$script\" unable to find script"
+        return 1
+    fi
+}
+
+viewhelp() {
+    echo "USAGE : sclauncher [FLAG] [OPTION]
+    FLAG   : -h, --help     : to view this help
+             -l, --load     : load/add script
+             -rm, --remove  : remove script
+    OPTION : user script"
+    return 0
+}
+
+sclrun() {
+    exe=`ls $HOME/.scripts/cache/ | dmenu -p '        • script launcher •         ' -fn 'Liberation Mono:pixelsize=13' -i -l 5 -y 80 -x 800 -w 300 -nb '#05111D' -sb '#BE1932' -nf '#CCCCCC' -sf '#FFFFFF'` && exec $exe
+}
+
+case "$1" in
+    '-l'|'--load')
+    script=$2
+    if [ ! -z $3 ]; then
+        link=$3
+    else
+        link=$script
+    fi
+    ldscript
+    ;;
+    '-rm'|'--remove')
+    script=$2
+    rmscript
+    ;;
+    '-h'|'--help')
+    viewhelp
+    ;;
+    *)
+    sclrun
+    ;;
+ esac

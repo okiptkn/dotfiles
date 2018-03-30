@@ -1,0 +1,63 @@
+#!/bin/sh
+#
+
+#
+# [ldmt] simple shell script to mount & unmount partition also support for mtp devices, see [ldmt -h] for help/usage
+# more@ github.com/okiptkn
+#
+# (c) 2018 <Restu Purnomo>
+# Licensing stuff : By the name of the Dark Lord Satania-sama, I hereby granted you the permissions 
+# to do whatever the fuck it is you want to do with this script. No warranty or whatsoever provided.
+# 
+
+# TODO : support for drive labels with characters on it & learn a better scripting
+
+# get drive labels
+    cdr=$(lsblk --fs | grep sda2 | awk '{ print $3}')
+    ddr=$(lsblk --fs | grep sda5 | awk '{ print $3, $4}') 
+    edr=$(lsblk --fs | grep sda6 | awk '{ print $3}')   
+   
+    # set mounting option and flags    
+    if [ "$1" = "-c" ]; then
+        mkdir -p ~/port/$cdr &&
+        sudo mount /dev/sda2 ~/port/$cdr && 
+        echo "[$cdr] is mounted at ~/port directory"
+    elif [ "$1" = "-d" ]; then
+        mkdir -p ~/port/What\'\s\ New && # replace with your drives label manually in case you're using a character on its label like this one
+        sudo mount /dev/sda5 ~/port/What\'\s\ New && 
+        echo "[$ddr] is mounted at ~/port directory"
+    elif [ "$1" = "-e" ]; then
+        mkdir -p ~/port/$edr &&
+        sudo mount /dev/sda6 ~/port/$edr &&
+        echo "[$edr] is mounted at ~/port directory"
+    elif [ "$1" = "-mtp" ]; then
+        mkdir -p ~/port/mtp &&
+        jmtpfs ~/port/mtp &&
+        echo "your phone is mounted at ~/port/mtp directory"
+
+    #unmounting
+    elif [ "$1" = "-uc" ]; then
+        sudo umount /dev/sda2 &&
+        rmdir ~/port/$cdr &&
+        echo "[$cdr] is unmounted successfully"
+    elif [ "$1" = "-ud" ]; then
+        sudo umount /dev/sda5 &&
+        rmdir ~/port/What\'\s\ New &&
+          echo "[$ddr] is unmounted successfully"
+    elif [ "$1" = "-ue" ]; then
+        sudo umount /dev/sda6 &&
+        rmdir ~/port/$edr &&
+        echo "[$edr] is unmounted successfully"
+    elif [ "$1" = "-umtp" ]; then
+         fusermount -u ~/port/mtp &&
+        rmdir ~/port/mtp &&
+        echo "your phone is safely unmounted"
+    elif [ "$1" = "-h" ]; then
+        echo "USAGE : ldmt [FLAGS]
+        FLAGS : -c, -d, -e, to mount drive respectively
+                -mtp, to mount mtp/android device"
+    else
+        echo "'$1' is not a correct flags. see '-h' for help"
+    fi 
+
+

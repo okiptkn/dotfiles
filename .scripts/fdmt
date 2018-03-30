@@ -1,0 +1,37 @@
+#!/bin/sh
+#
+
+#
+# [fdmt] simple shell script to mount & unmount usb flash drive, see [fdmt -h] for help/usage
+# more@ github.com/okiptkn
+#
+# (c) 2018 <Restu Purnomo>
+# Licensing stuff : By the name of the Dark Lord Satania-sama, I hereby granted you the permissions 
+# to do whatever the fuck it is you want to do with this script. No warranty or whatsoever provided.
+# 
+
+
+# get flash drive labels
+    name=$(lsblk --fs | grep $2 2>/dev/null | awk '{ print $3 }')
+
+    # set mount option and flags
+    if [ "$1" = "-l" ]; then
+        lsblk --fs | awk '!/sda/' | awk '!/sr0/'
+    elif [ "$1" = "-m" ]; then
+        mkdir -p ~/port/$name &&
+        sudo mount -o umask=0 /dev/$2 ~/port/$name &&
+        echo "your usb drive is mounted at ~/port"
+    elif [ "$1" = "-u" ]; then
+        sudo umount /dev/$2 &&
+        rmdir ~/port/$name
+        echo "your usb drive is safely unmounted"
+    elif [ "$1" = "-h" ]; then
+        echo "USAGE : fdmt [FLAG] [OPTION]
+        FLAGS: '-h' to show this help message
+               '-l' to list all available usb drive
+               '-m [OPTION]' mount selected device to your ~/port
+               '-u [OPTION]' unmount selected device
+        OPTION: sdXY (sda1, sdb2, sdc3, etc)"
+    else
+        echo "unknown command, use '-h' for help"
+    fi

@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+
+# main dmenu launcher
+
+drun="dmenu_run -p '------------| main menu |-----------' -fn 'Liberation Mono:pixelsize=13' -i -l 5 -y 80 -x 800 -w 300 -nb '#05111D' -sb '#D13451' -nf '#CCCCCC' -sf '#FFFFFF'"
+
+cmd=$(eval $drun)
+
+exit 0

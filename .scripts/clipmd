@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+
+# [clipmd] start clipmenu daemon if not already started, run this script on your .xinitrc and send it to background
+# ex : clipmd &
+
+if [[ ! $(pgrep -f clipmenud) ]]; then
+    clipmenud &
+fi
