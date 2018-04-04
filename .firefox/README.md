@@ -1,9 +1,9 @@
 ## Summary
 
 ### userChrome.css
-manages firefox appearances, it uses [Nocturnal](https://userstyles.org/styles/105352/nocturnal-firefox-theme-read-description) theme as its base. Place it on your ~/.mozilla/firefox/[yourprofile]/chrome . Some of these customizations are including :
-- removes icon url and uses local base64 encryption icon instead, put img folder on ~/.mozilla/firefox/[yourprofile] in case button icon not showing up properly
-- tabs are disabled by default in favor of `Tree Style Tab` add-ons
+manages firefox appearances, it uses [Nocturnal](https://userstyles.org/styles/105352/nocturnal-firefox-theme-read-description) theme as its base. Place it inside your firefox profile `ex : ~/.mozilla/firefox/[yourprofile]/chrome` . Some of these customizations are including :
+- removes icon url and uses local base64 encryption icon instead, put img folder on `~/.mozilla/firefox/[yourprofile]` in case button icon not showing up properly
+- tabs are now disabled by default in favors of `Tree Style Tab` add-ons
 
 ### [surfingkeys.js]()
 custom key mapping for `Surfingkeys` add-ons, mostly vim based    
