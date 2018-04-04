@@ -9,7 +9,7 @@ manages firefox appearances, it uses [Nocturnal](https://userstyles.org/styles/1
 custom key mapping for `Surfingkeys` add-ons, mostly vim based    
 #### some custom mapped key
 * see basic tutorial [**here**](https://github.com/brookhong/Surfingkeys)
-* see also **default** mapping in the add-ons preference `ctrl+shift+a` , note that these customed keys below takes priority
+* see also **default** mapping in the add-ons preference `ctrl+shift+a` , note that these custom mapped keys below takes priorities
 - **navigations**
 
 | keys  | function           |  | keys | function                              |
