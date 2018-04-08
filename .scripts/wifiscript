@@ -12,7 +12,7 @@
 # Licensing stuff : By the name of the Dark Lord Satania-sama, I hereby granted you the permissions 
 # to do whatever the fuck you want to do with this script. No warranty or whatsoever provided.
 # 
-# TODO : learn [wpa_supplicant] command to allow switching between router within session
+# TODO : learn [wpa_supplicant] command for more scriptable features
 
 # write function
 _main() {
