@@ -1,7 +1,7 @@
 ![alt text](logo.png "dotfiles")
 
 # DOTFILES
-Main dotfiles backup for my current setup, Arch + dwm, also wmutils and velox. for my dwm build see [here](https://github.com/okiptkn/dwmfu)
+Main dotfiles backup for my current setup, Arch + dwm, also [wmutils](https://github.com/wmutils) and [velox](https://github.com/michaelforney/velox). for my custom dwm build see [here](https://github.com/okiptkn/dwmfu)
 
 ## Summary
 all of these files are mostly self-explanatory, but here are some brief summary of it :
