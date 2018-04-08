@@ -44,7 +44,7 @@ while true; do
 
         [Qq]* ) exit;;
 
-        * ) echo 'type "q" to quit this dialog';;
+        * ) echo 'error : invalid option';;
 
     esac
 done
