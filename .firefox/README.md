@@ -9,7 +9,7 @@ manages firefox appearances, it uses [Nocturnal](https://userstyles.org/styles/1
 custom key mapping for `Surfingkeys` add-ons, mostly vim based    
 #### some custom mapped key
 * see basic tutorial [**here**](https://github.com/brookhong/Surfingkeys)
-* see also **default** mapping in the add-ons preference `ctrl+shift+a` , note that these custom mapped keys below takes priorities
+* see also **default** mapping in the add-ons preference `ctrl+shift+a` , note that these custom mapped keys below takes priority
 - **navigations**
 
 | keys  | function           |  | keys | function                              |
@@ -46,7 +46,7 @@ config for `Tree Style Tab` add-ons
 - `F1` to toggle tabs visibility
 - use it along side `Multiple Tab Handler` add-ons to enable tabs grouping
 
-### Currently used add-ons
+### List of currently used add-ons
 - Surfingkeys
 - Tree Style Tab
 - Multiple Tab Handler

@@ -2,13 +2,13 @@
 #
 
 #
-# [netspeedmonitor] a simple shell script to print current network speed, requires lemonbar for pop up
+# [networkmon] a simple shell script to print current network speed, requires lemonbar for pop up
 # 
 # more@ github.com/okiptkn
 #
 # (c) 2018 <Restu Purnomo>
 # Licensing stuff : By the name of the Dark Lord Satania-sama, I hereby granted you the permissions 
-# to do whatever the fuck it is you want to do with this script. No warranty or whatsoever provided.
+# to do whatever the fuck you want to do with this script. No warranty or whatsoever provided.
 # 
 
 _popname="network"
@@ -41,7 +41,7 @@ _pipetolemon() {
   }
 
 _main() {
-        $(_pipetolemon) & read -t 5 ; pkill netspeedmonitor &2>/dev/null
+        $(_pipetolemon) & read -t 5 ; pkill networkmon &2>/dev/null
   }
     
 _main"$@"

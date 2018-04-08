@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
+#
 
 # [passmanager] dmenu script for managing gpg encrypted password
-# requires pass (https://www.passwordstore.org/)
+# requires [pass] package from (https://www.passwordstore.org/)
 
 shopt -s nullglob globstar
 
@@ -12,7 +13,7 @@ if [[ $1 == "--type" ]]; then
 fi
 
 
-STARTDIR=${PASSWORD_STORE_DIR-~/.password-store}
+STARTDIR=${PASSWORD_STORE_DIR-~/.passwd} #store your encrytpted pass file here
 BASEDIR=$STARTDIR
 DONE=0
 LEVEL=0
@@ -27,7 +28,7 @@ while [ "$DONE" -eq 0 ] ; do
   if [ "$LEVEL" -ne 0 ] ; then
     password_files=(".." "${password_files[@]}") 
   fi
-  entry=$(printf '%s\n' "${password_files[@]}" | dmenu "$@" -p '------------| password |------------' -fn 'Liberation Mono:pixelsize=13' -i -l 5 -y 80 -x 800 -w 300 -nb '#05111D' -sb '#9B2859' -nf '#CCCCCC' -sf '#FFFFFF')
+  entry=$(printf '%s\n' "${password_files[@]}" | dmenu "$@" -p '⧬ _______________________________ passmanager ' -i -l 5 -y 80 -x 800 -w 300 -nb '#27292A' -sb '#F77E85' -nf '#CCCCCC' -sf '#27292A')
   
   echo "entry: $entry"
   if [ -z $entry ] ; then

@@ -1,4 +1,8 @@
 #!/bin/sh
+#
+
+# simple lemonbar popup example from z3bra, im using it as base for my [networkmon] script
+
 popname=popbar
 message="hai domo! baacha yoochuubah kizuna ai des!"
 # Create the popup and make it live for 3 seconds

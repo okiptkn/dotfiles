@@ -1,8 +1,6 @@
 #!/bin/sh
 #
 
-# [instacli] dmenu script to launch a cli program on the go
-
 # Volume Status for alsa users
 #volume="$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')"
 
@@ -21,10 +19,10 @@ done
 }
 
 # Menu Order.
-menu_list="vim\nranger\nncmpcpp\ntask"
+menu_list="vim\nranger\nncmpcpp\ntask\nwifiscript"
 
 # Dmenu Preferences
-Dmenu="dmenu_run -p '------------| insta cli |-----------' -fn 'Liberation Mono:pixelsize=13' -i -l 5 -y 80 -x 800 -w 300 -nb '#05111D' -sb '#870A27' -nf '#CCCCCC' -sf '#FFFFFF'"
+Dmenu="dmenu -p '⧬ ___________________________________ instacmd ' -i -l 5 -y 80 -x 800 -w 300 -nb '#27292A' -sb '#CC939B' -nf '#CCCCCC' -sf '#27292A'"
 
 cmd=$(echo -e "$menu_list" | eval $Dmenu)
 
@@ -37,5 +35,7 @@ case $cmd in
         $terminal top ;;
     ncmpcpp)
         $terminal ncmpcpp ;;
+    wifiscript)
+        $terminal wifiscript ;;
 esac
 exit 0

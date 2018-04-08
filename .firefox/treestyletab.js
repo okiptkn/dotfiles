@@ -49,16 +49,17 @@
 /* active tab */
 .tab.active {
   height: 39px !important;
-  background-color: #be1932;
+  background-color: #82C8BB;
 }
 .tab.active .label {
   font-weight: bold;
   font-size: 16px;
+  color: #27292A !important;
 }
 .tab.active .twisty,
 .tab.active .label,
 .tab.active .counter {
-  color: #ffffff;
+  color: #27292A;
   font-weight: bold;
 }
 
@@ -72,6 +73,9 @@
 
 /* hover tab */
 .tab:hover {
-  background: #E22C47 !important;
+  background: #D9D5A6 !important;
   opacity: 1;
+}
+.tab:hover .label {
+color: #27292A !important;
 }

@@ -1,10 +1,7 @@
 #!/bin/sh
 #
 
-# [clipboard] dmenu script to launch clipmenu
-# requires cdown's clipmenu (https://github.com/cdown/clipmenu/)
-
-clipb="clipmenu -p '------------| clipboard |-----------' -fn 'Liberation Mono:pixelsize=13' -i -l 5 -y 80 -x 800 -w 300 -nb '#05111D' -sb '#5F2B57' -nf '#CCCCCC' -sf '#FFFFFF'"
+clipb="clipmenu -p '⧬ ___________________________________ clipboard ' -i -l 5 -y 80 -x 800 -w 300 -nb '#27292A' -sb '#82C8BB' -nf '#CCCCCC' -sf '#27292A'"
 
 cmd=$(eval $clipb)
 

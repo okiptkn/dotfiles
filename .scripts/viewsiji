@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# [viewsiji] open siji font cheatsheet/viewer
+
 check_xfd()
 {
 	if [ "$(command -v xfd)" ]; then
