@@ -1,0 +1,117 @@
+#!/bin/bash
+#
+
+# [abg] a simple auto-blur background shell script
+# 
+# more@ github.com/okiptkn
+#
+# Dark Lord Satania - DLSv66.6
+# (c) 2018 <Restu Purnomo>
+# Licensing stuff : By the name of the Dark Lord Satania-sama, I hereby granted you the permissions 
+# to do whatever the fuck you want to do with this script. No warranty or whatsoever provided.
+#
+
+# check for running instance before launching the script
+for pid in $(pidof -x abg); do
+    if [[ $pid != $$ ]] && [[ $1 = "-w" ]]; then
+        echo "[PID=$pid] [abg] AutoBlurbackGround : Warning! process is already running..."
+        sleep 1
+        echo "Attempting to kill the previous process..."
+        sleep 1
+        kill -9 $pid
+        echo "restarting abg with [PID=$pid]..."
+    else
+        if [[ $pid != $$ ]] && [[ $1 = "" ]]; then
+            echo "[PID=$pid] [abg] AutoBlurbackGround : Warning! process is already running..."
+            sleep 1
+            echo "Attempting to kill the previous process..."
+            sleep 1
+            kill -9 $pid
+            echo "restarting abg with [PID=$pid]..."
+            sleep 1
+            echo "Warning! no [-w] FLAG specified : restarting abg with default background..."
+        fi
+    fi
+done
+
+# Reset getopts in case it has been used previously in the shell
+OPTIND=1
+
+# define some variable
+about='false'
+wal=''
+interval=''
+unset $flag    # just in case
+
+# set default/fallback background
+_getdef="$(tail -n1 $HOME/.hsetbg | cut -d "'" -f6)"
+
+# set some flags
+while getopts ':hi:w:a' flag; do
+  case "${flag}" in
+    h)
+        echo "[USAGE] : abg [FLAG] [ARGS]"
+        echo "[FLAG]  : -h, or -help, show this help messages"
+        echo "          -i [ARGS], set interval, default is 1"
+        echo "          -w [ARGS] select wallpaper background"
+        echo "          -v, print abg about info and exit"
+        exit
+        ;;
+    a) 
+        about=true
+        echo "#####################################################"
+        echo "[abg] AutoBlurbackGround ----------------------------"
+        echo "Simple script to generate a blurred background       "
+        echo "and change wallpaper                                 "
+        echo "-------------------------------------------- DLSv66.6"
+        echo "############################## (C) 2018 Restu Purnomo"
+        exit
+        ;;
+    i) 
+        interval="${OPTARG}"
+        ;;
+    w)
+        wal="${OPTARG}"
+        ;; 
+    \?)
+        echo "Invalid [FLAG] : see -h or -help, for usage help"
+        exit
+        ;;
+    :)
+        echo "[FLAG] -$OPTARG requires an argument"
+        exit
+        ;;
+  esac
+done
+
+shift $((OPTIND -1))
+
+## failsafe measurement in case the script got interrupted
+function fsafe() {
+    hsetroot -fill ${wal:=$_getdef}
+    exit
+}
+    # liking traps is gay
+trap fsafe EXIT
+trap fsafe SIGINT
+trap fsafe SIGKILL
+trap fsafe SIGHUP
+trap fsafe SIGTERM
+
+## write main function 
+lalala() {
+    tit="$(xdotool getactivewindow)"
+
+    if [[ $tit -eq 0 ]]; then
+        hsetroot -fill ${wal:=$_getdef} 
+    else
+        hsetroot -fill ${wal:=$_getdef} -blur 4
+    fi
+}
+
+## loop it
+    
+    while true ; do
+        echo "$(lalala)"
+        sleep ${interval:-1}
+    done > /dev/null 2>&1
