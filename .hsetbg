@@ -1,0 +1,4 @@
+#!/bin/bash
+#
+
+'hsetroot' '-fill' '/home/okiptkn/.backgrounds/.jpg/43.jpg'

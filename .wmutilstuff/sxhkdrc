@@ -1,0 +1,55 @@
+# sxhkd config for wmutils
+# mostly just basic stuff and is still a mess. haven't really got much time to mess with this yet
+# TODO : learn more about this wm!
+
+# menu launcher
+super + s
+	sclauncher
+
+# term
+alt + Return
+    st
+
+# rainbow for you
+super + r
+    rainbow.sh &
+
+# move windows around
+super + {h,j,k,l}
+	wmv {-20 0, 0 20, 0 -20, 20 0} $(pfw)
+
+#resize windows
+super + shift + {h,j,k,l}
+	wrs {-20 0, 0 20, 0 -20, 20 0} $(pfw)
+
+# focus window after position 
+super + ctrl + {h,j,k,l}
+	focus $(vroum {next_west, next_south, next_north, next_east})
+
+# cycle focus
+super + a
+   focus.sh next
+
+# focus cursor
+~button1
+    focus.sh $(underneath.sh)
+
+#tile
+super + t
+    tile.sh
+
+# move windows to center
+super + c
+	center.sh
+
+# fullscreen
+super + f
+	fullscreen $(pfw)
+
+# close window
+super + q
+	killwa $(pfw)
+
+# exit
+ctrl + alt + Delete
+    pkill x
