@@ -1,7 +1,7 @@
 ![alt text](logo.png "dotfiles")
 
 # DOTFILES
-Main dotfiles backup for my current setup, Arch + dwm, also [wmutils](https://github.com/wmutils) and [velox](https://github.com/michaelforney/velox). for my custom dwm build see [here](https://github.com/okiptkn/dwmfu)
+Main dotfiles backup for my current setup, arch and dwm, also [wmutils](https://github.com/wmutils) and [velox](https://github.com/michaelforney/velox). for my custom dwm build see [here](https://github.com/okiptkn/dwmfu)
 
 ## Summary
 all of these files are mostly self-explanatory, but here are some brief summary of it :
@@ -11,7 +11,7 @@ all of these files are mostly self-explanatory, but here are some brief summary 
 simple mpv config, also includes some helpful lua script such as :
 * `autoload.lua` auto load media files in current folder into playlist
 * `equalizer.lua` display equalizer, `ctrl + E` to toggle
-* `navigator.lua` on screen[osc] file navigator, `alt + f` to open. see other key in `input.conf`
+* `navigator.lua` on screen[osc] file navigator, `alt + f` to open. see other keys in `input.conf`
 * `visualizer.lua` display visualizer, `c` to cycle/toggle visualizer
 
 | keys                  | function             |
@@ -26,7 +26,7 @@ simple mpv config, also includes some helpful lua script such as :
 | `.`                   | cycle osc visibility |
 
 #### nano
-enable syntax highlighting on nano
+`nanorc` enable syntax highlighting
 
 ### .vimrc & .vim/
 vim config and some extra plugin installed with [pathogen](https://github.com/tpope/vim-pathogen). list of currently installed plugin :
