@@ -2,7 +2,6 @@
 #
 
 # this script was meant to be used along side my dmenu's instacmd script
-# upon executing it, this script will open a terminal and prompt an interactive dialog
 # also note that this script simply uses [su] command to execute the [wpa_supplicant] command within root environment, 
 # depends on your setup you might want to edit the main command to suits your setup
 
