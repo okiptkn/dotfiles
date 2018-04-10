@@ -24,6 +24,8 @@ simple mpv config, also includes some helpful lua script such as :
 | `PageUp/Down`         | next/prev chapter    |
 | `/`                   | display title        |
 | `.`                   | cycle osc visibility |
+| `>`                   | play next playlist   |
+| `<`                   | play previous        |
 
 #### nano
 enable syntax highlighting
