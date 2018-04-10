@@ -26,7 +26,7 @@ simple mpv config, also includes some helpful lua script such as :
 | `.`                   | cycle osc visibility |
 
 #### nano
-`nanorc` enable syntax highlighting
+enable syntax highlighting
 
 ### .vimrc & .vim/
 vim config and some extra plugin installed with [pathogen](https://github.com/tpope/vim-pathogen). list of currently installed plugin :

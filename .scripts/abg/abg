@@ -54,7 +54,7 @@ while getopts ':hi:w:a' flag; do
         echo "[FLAG]  : -h, or -help, show this help messages"
         echo "          -i [ARGS], set interval, default is 1"
         echo "          -w [ARGS] select wallpaper background"
-        echo "          -v, print abg about info and exit"
+        echo "          -a, print abg about info and exit"
         exit
         ;;
     a) 
