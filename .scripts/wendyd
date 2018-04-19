@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+
+# [wendyd] a daemon for wendy, start this script from your .xinitrc
+
+wendy -m 384 -f ~/path/to/yourmaildir/INBOX/new -t 1 timeout 20s mailnotifier

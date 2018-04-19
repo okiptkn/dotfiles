@@ -3,13 +3,12 @@
 
 #
 # [fdmt] simple shell script to mount & unmount usb flash drive, see [fdmt -h] for help/usage
+#
+# Dark Lord Satania - DLSv6.66 License
+# [fdmt] (c) 2018 <Restu Purnomo>
+# 
 # more@ github.com/okiptkn
 #
-# (c) 2018 <Restu Purnomo>
-# Licensing stuff : By the name of the Dark Lord Satania-sama, I hereby granted you the permissions 
-# to do whatever the fuck you want to do with this script. No warranty or whatsoever provided.
-# 
-
 
 # get flash drive labels
     name=$(lsblk --fs | grep $2 2>/dev/null | awk '{ print $3 }')

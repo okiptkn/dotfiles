@@ -16,7 +16,7 @@ alias grep='grep --color=always'
 alias ad='aria2c -x 16 -s 8'
 alias cd2018="cd ~/port/What\'\s\ New/©\ 2018"
 alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
-
+alias working="cd ~/.config/dwm"
 
 ## write some function for alias ##
 
@@ -26,32 +26,29 @@ function sbg() {
         feh --bg-fill /home/okiptkn/.backgrounds/.jpg/$2.jpg
     elif [ "$1" = "-p" ]; then
         feh --bg-fill /home/okiptkn/.backgrounds/$2.png
+    elif [ "$1" = "-je" ]; then
+        feh --bg-fill /home/okiptkn/.backgrounds/.jpeg/$2.jpeg
     else
         echo "$1 and $2 is not a command"
     fi
 }
 
-# wifi - in case you don't use any gui tools
+# wifi
 function connect() {
-    if [ "$1" = "ssid" ]; then
-        su -c 'wpa_supplicant -B -i wlp3s0b1 -c <(wpa_passphrase ssid pass)'
+    if [ "$1" = "potemkin" ]; then
+        su -c 'wpa_supplicant -B -i wlp3s0b1 -c <(wpa_passphrase potemkin schkl666)'
     else
         echo "$1 is an unknown ssid"
     fi
 }
 
 # gitrepo
-alias ginit='git init'
-alias gitra='git remote add origin' #add remote repo
-alias gita='git add'                #add files
-alias gitr='git rm -r'              #remove files
-alias gitc='git commit -m'          #commit changes
-alias gitp='git push -u origin master'
-
-# meirl
-function meirl() {
-    echo "_(:3_I <)_"
-}
+alias igit='git init'
+alias ragit='git remote add origin' #add remote repo
+alias agit='git add'                #add files
+alias rgit='git rm -r'              #remove files
+alias cgit='git commit -m'          #commit changes
+alias pgit='git push -u origin master'
 
 # touchpad
 function pad {
@@ -66,7 +63,13 @@ function pad {
 
 # youtube-dl
 alias fetch='youtube-dl -F'
-    # pipe youtube-dl to aria2
+
 function ydl() {
     youtube-dl -f $1 $2 --external-downloader aria2c
+}
+
+# dumb shits
+# meirl
+function meirl() {
+    echo "_(:3_I <)_"
 }

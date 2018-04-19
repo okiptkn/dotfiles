@@ -2,16 +2,13 @@
 #
 
 # [abg] a simple auto-blur background shell script
-# 
+#
+# Dark Lord Satania - DLSv6.66 License
+# [abg] (c) 2018 <Restu Purnomo>
+#
 # more@ github.com/okiptkn
-#
-# Dark Lord Satania - DLSv66.6
-# (c) 2018 <Restu Purnomo>
-# Licensing stuff : By the name of the Dark Lord Satania-sama, I hereby granted you the permissions 
-# to do whatever the fuck you want to do with this script. No warranty or whatsoever provided.
-#
 
-# check for running instance before launching the script
+# check for previous running instance before launching the script
 for pid in $(pidof -x abg); do
     if [[ $pid != $$ ]] && [[ $1 = "-w" ]]; then
         echo "[PID=$pid] [abg] AutoBlurbackGround : Warning! process is already running..."
@@ -43,8 +40,6 @@ wal=''
 interval=''
 unset $flag    # just in case
 
-# set default/fallback background
-_getdef="$(tail -n1 $HOME/.hsetbg | cut -d "'" -f6)"
 
 # set some flags
 while getopts ':hi:w:a' flag; do
@@ -87,6 +82,9 @@ done
 shift $((OPTIND -1))
 
 ## failsafe measurement in case the script got interrupted
+# set default/fallback background
+_getdef="$(tail -n1 $HOME/.hsetbg | cut -d "'" -f6)"
+
 function fsafe() {
     hsetroot -fill ${wal:=$_getdef}
     exit
@@ -100,9 +98,9 @@ trap fsafe SIGTERM
 
 ## write main function 
 lalala() {
-    tit="$(xdotool getactivewindow)"
+    _getid="$(xdotool getactivewindow)"
 
-    if [[ $tit -eq 0 ]]; then
+    if [[ $_getid -eq 0 ]]; then
         hsetroot -fill ${wal:=$_getdef} 
     else
         hsetroot -fill ${wal:=$_getdef} -blur 4

@@ -1,16 +1,14 @@
 #!/bin/bash
 #
 
-# this script was meant to be used along side my dmenu's instacmd script
+# [wifiscript] this script was meant to be used along side my dmenu's instacmd script
 # also note that this script simply uses [su] command to execute the [wpa_supplicant] command within root environment, 
 # depends on your setup you might want to edit the main command to suits your setup
 
+# Dark Lord Satania - DLSv6.66 License
+# [wifiscript] (c) 2018 <Restu Purnomo>
+
 # more@ github.com/okiptkn
-#
-# (c) 2018 <Restu Purnomo>
-# Licensing stuff : By the name of the Dark Lord Satania-sama, I hereby granted you the permissions 
-# to do whatever the fuck you want to do with this script. No warranty or whatsoever provided.
-# 
 # TODO : learn [wpa_supplicant] command for more scriptable features
 
 # write function

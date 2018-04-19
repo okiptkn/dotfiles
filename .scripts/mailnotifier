@@ -1,0 +1,41 @@
+#!/bin/sh
+#
+
+#
+# [mailnotifier] a simple mail notifier script using wendy and lemonbar as pop up
+# [wendyd] will automatically launch this script
+
+# Dark Lord Satania - DLSv6.66 License
+# [mailnotifier] (c) 2018 <Restu Purnomo>
+
+# more@ github.com/okiptkn
+#
+
+# prevent stacking notifications
+for pid in $(pidof -x mailmon); do
+    if [ $pid != $$ ]; then
+        sleep 0.1
+        exit 0;
+    fi
+done
+
+# set some variables
+_popname=mailmon
+_micon="   *  "
+_ficon="FontAwesome:style=Regular:size=12"
+_cyan="#6BC2B7"
+
+_detnu() {
+    _numail="$(find /home/okiptkn/.mail/rmail/INBOX/new/* -mmin -1 | wc -l)"
+    echo -e "%{l}        You've got %{F$_cyan}${_numail}%{F-} new mail"
+}
+
+_main() {
+    while true ; do
+        echo -e "%{l}$(_detnu)%{r}%{B$_cyan}${_micon}%{B-}"
+        sleep 1
+    done |\
+        lemonbar -d -n "${_popname}" -g 210x40+20+90 -f "PT Sans Narrow:style=Bold:size=12" -f "$_ficon" -F "#27292A" -B "#E3E3E3"
+}
+
+_main"$@"

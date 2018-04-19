@@ -4,21 +4,23 @@
 #
 # [networkmon] a simple shell script to print current network speed, requires lemonbar for pop up
 # 
+# Dark Lord Satania - DLSv6.66 License
+# [networkmon] (c) 2018 <Restu Purnomo>
+
 # more@ github.com/okiptkn
-#
-# (c) 2018 <Restu Purnomo>
-# Licensing stuff : By the name of the Dark Lord Satania-sama, I hereby granted you the permissions 
-# to do whatever the fuck you want to do with this script. No warranty or whatsoever provided.
 # 
 
 _popname="network"
+_wicon="      "
+_ficon="FontAwesome:style=Regular:size=12"
+_red="#CC939B"
 
 _netw() {
   int="wlp3s0b1" # set your wifi interface
   downr=`cat /sys/class/net/$int/statistics/rx_bytes`
   upt=`cat /sys/class/net/$int/statistics/tx_bytes`
   
-   sleep 1
+   sleep 0.1
    
   downn=`cat /sys/class/net/$int/statistics/rx_bytes`
   upn=`cat /sys/class/net/$int/statistics/tx_bytes`
@@ -29,19 +31,19 @@ _netw() {
 
   # rx = downspeed
   # tx = upspeed
-   echo "up $up kBps | down $down kBps"
+   echo "       up %{F$_red}$up%{F-} kBps | down %{F$_red}$down%{F-} kBps"
   }   
 
 _pipetolemon() {
     while true ; do
-        echo "%{c}$(_netw)"
+        echo -e "%{l}$(_netw)%{r}%{B$_red}${_wicon}%{B-}"
         sleep 1
     done |\
-        lemonbar -d -n "${_popname}" -g 200x40+20+40 -F "#C4BFBF" -B "#05111D"
+        lemonbar -d -n "${_popname}" -g 210x40+20+40 -f "PT Sans Narrow:style=Bold:size=12" -f "$_ficon" -F "#27292A" -B "#E3E3E3"
   }
 
 _main() {
-        $(_pipetolemon) & read -t 5 ; pkill networkmon &2>/dev/null
+        $(_pipetolemon) & read -t 60 ; pkill networkmon &2> /dev/null
   }
     
 _main"$@"

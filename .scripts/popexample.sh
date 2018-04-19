@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 
-# simple lemonbar popup example from z3bra, im using it as base for my [networkmon] script
+# simple lemonbar popup example from z3bra, im using it as base for my [networkmon] and [mailnotifier] script
 
 popname=popbar
 message="hai domo! baacha yoochuubah kizuna ai des!"
