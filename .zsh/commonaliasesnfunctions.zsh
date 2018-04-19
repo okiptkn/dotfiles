@@ -36,7 +36,7 @@ function sbg() {
 # wifi
 function connect() {
     if [ "$1" = "potemkin" ]; then
-        su -c 'wpa_supplicant -B -i wlp3s0b1 -c <(wpa_passphrase potemkin schkl666)'
+        su -c 'wpa_supplicant -B -i yourwifiinterface -c <(wpa_passphrase yourssid yourpass)'
     else
         echo "$1 is an unknown ssid"
     fi
