@@ -18,5 +18,10 @@ nohup abg &
 ```
 nohup abg -w /path/yourwal.png -i 0.5 &
 ```
+#### extras
+put this on your neofetch config to let neofetch use `.hsetbg` to fetch image
+```
+image_source="$(awk -F\' '/hsetroot/ {printf $(NF-1)}' "${HOME}/.hsetbg")"
+```
 ### LICENSE
 this script is licensed under DLSv6.66 License - see [LICENSE](LICENSE) for details

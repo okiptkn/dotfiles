@@ -12,7 +12,7 @@
 #
 
 # prevent stacking notifications
-for pid in $(pidof -x mailmon); do
+for pid in $(pidof -x mailnotifier); do
     if [ $pid != $$ ]; then
         sleep 0.1
         exit 0;
@@ -20,7 +20,7 @@ for pid in $(pidof -x mailmon); do
 done
 
 # set some variables
-_popname=mailmon
+_popname="mailnotifier"
 _micon="   *  "
 _ficon="FontAwesome:style=Regular:size=12"
 _cyan="#6BC2B7"

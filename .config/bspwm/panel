@@ -1,0 +1,92 @@
+#! /bin/sh
+
+source $(dirname $0)/config
+
+if xdo id -a "$PANEL_WM_NAME" > /dev/null ; then
+	printf "%s\n" "The panel is already running." >&2
+	exit 1
+fi
+
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
+xtitle -sf 'T%s\n' > "$PANEL_FIFO" &
+#clock -sf 'S%a %H:%M' > "$PANEL_FIFO" &
+bspc subscribe report > "$PANEL_FIFO" &
+#bspc config top_padding $HEIGHT
+
+#panel
+{   
+    music() {
+        local playb=$(pAction ${putih} ${unguD2} "mpc pause &>/dev/null" ${CPAUSE2})
+        local pauseb=$(pAction ${putih} ${unguD2} "mpc play &>/dev/null" ${CPLAY2})
+        local prev=$(pAction ${putih} ${unguD2} "mpc prev &>/dev/null" ${CPREV2})
+        local next=$(pAction ${putih} ${unguD2} "mpc next &>/dev/null" ${CNEXT2})
+        local stat="$(mpc status | grep \# | awk '{print $1}')"
+        local artist=$(mpc -f %artist% current)
+        local musicname=$(mpc -f %title% current)
+        local text=$(pTextUnderline ${GRAY} ${unguD2} "no media are currently playing!")
+        local icon2=$(pIconUnderline ${GRAY} ${unguD2} ${CMUSIC})
+
+        if [ "${stat}" ] && [ "${stat}" = "[playing]" ] ; then
+            echo "%{B$unguD2}${prev}%{B$unguD2} ${playb}%{B$unguD2} ${artist:0:20} - ${musicname:0:40} ${next}%{B$unguD2}"
+                    elif [ "${stat}" ] && [ "${stat}" = "[paused]" ] ; then
+            echo "%{B$unguD2}${pauseb}%{B$unguD2} ${artist:0:20} - ${musicname:0:15}%{B$unguD2}"
+        else
+            echo "${icon2} ${text}"
+        fi
+    }
+
+    net() {
+        local _GETIWL=$(/sbin/iwgetid -r)
+        local _GETETH=$(ip a | grep "state UP" | awk '{ORS=""}{print $2}' | cut -d ':' -f 1)
+        local _status=${_GETIWL:_GETETH}
+        local _status2="${_status:-disconnected}"
+        #toggle
+        if [ "$_status2" == "$_status" ]
+        	then
+			echo $(pTextUnderline ${putih} ${biruD3} ".: ${_status2}")
+		else
+			echo $(pTextUnderline ${GRAY} ${biruD3} "${_status2}")
+		fi
+    }
+    
+    suara() {
+        local cmd=$(amixer | awk 'FNR == 7 {print $5}' | grep -oP '\[\K[^\]]+')
+        echo "master vol. ${cmd}"
+    }
+    
+    clock() {
+#        local icon=$(pIcon ${putih} ${PAC})
+		local icon=$(pAction ${putih} ${abangD} "urxvt &" ${PAC2})
+        local cmd=$(date '+%H:%M')
+        local clr=$(pText ${putih} "${cmd}")
+        echo "${clr} ${icon}%{B$abangD}"
+    }
+    
+    popup() {
+		local pop="~/.scripts/popstat"
+		local terminal="urxvt"
+		local text=$(pText ${putih} "popit!")
+		local icon=$(pAction2 ${putih} ${biruD2} ${pop} ${terminal} ${text})
+		echo "${icon}%{B$biruD2}"
+	}
+	
+    while :; do
+        echo "S%{r}%{B$unguD2} $(music) %{B-}%{B$panilaD} $(suara) %{B-}%{B$biruD2}   $(popup)  %{B-}%{B$biruD3} $(net) %{B-}%{B$abangD}  $(clock) %{B-}"
+        sleep 1
+    done
+
+} > "$PANEL_FIFO" & 
+
+#amixer | awk 'FNR == 7 {print $5}'
+#source $(dirname $0)/panel_colors
+
+source $(dirname $0)/panel_bar < "$PANEL_FIFO" | lemonbar -a 32 -u 2 -n "$PANEL_WM_NAME" -g ${PANEL_GEO2} -f "$PANEL_FONT" -f ":slant=0:weight=100:pixelsize=6:antialias=False:minspace=True:lang=ja" -f "$FONT_ICON" -F "$COLOR_DEFAULT_FG" -B "$COLOR_DEFAULT_BG" | sh &
+
+wid=$(xdo id -m -a "$PANEL_WM_NAME")
+xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" "$wid"
+
+wait
