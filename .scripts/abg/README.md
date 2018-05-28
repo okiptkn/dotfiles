@@ -33,6 +33,14 @@ nohup abg &
 ```
 nohup abg -w /path/yourwal.png -i 0.5 &
 ```
+
+### PREVIEW
+* `abg` with blur=4
+![alt text](img/blur4.png "blur4")
+
+* `abg` with gamma=4
+![alt text](img/gamma4.png "gamma4")
+
 #### extras
 - put this on your neofetch config to let `neofetch` use `.hsetbg` to fetch image
 ```
