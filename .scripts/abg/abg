@@ -38,17 +38,21 @@ OPTIND=1
 about='false'
 wal=''
 interval=''
+blur=''
+gamma=''
+
 unset $flag    # just in case
-
-
 # set some flags
 while getopts ':hi:w:a' flag; do
   case "${flag}" in
     h)
         echo "[USAGE] : abg [FLAG] [ARGS]"
         echo "[FLAG]  : -h, or -help, show this help messages"
-        echo "          -i [ARGS], set interval, default is 1"
-        echo "          -w [ARGS] select wallpaper background"
+        echo "          -i [ARG], set interval, default is 1"
+        echo "          -w [ARG] select wallpaper background"
+        echo "          -b [ARG] pass blur level, value 0 means that"
+        echo "                    default value 4  will be used instead"
+        echo "          -g [ARG] pass gamma level, default value is 0"
         echo "          -a, print abg about info and exit"
         exit
         ;;
@@ -68,6 +72,12 @@ while getopts ':hi:w:a' flag; do
     w)
         wal="${OPTARG}"
         ;; 
+    b)
+        blur="${OPTARG}"
+        ;;
+    g)
+        gamma="${OPTARG}"
+        ;;
     \?)
         echo "Invalid [FLAG] : see -h or -help, for usage help"
         exit
@@ -101,7 +111,13 @@ lalala() {
     _getid="$(xdotool getactivewindow)"
 
     if [[ $_getid -eq 0 ]]; then
-        hsetroot -fill ${wal:=$_getdef} 
+        hsetroot -fill ${wal:=$_getdef}
+
+       elif [[ $gamma -ne 0 ]]; then
+           hsetroot -fill ${wal:=$_getdef} -gamma ${gamma}
+       elif [[ $blur -ne 0 ]]; then
+           hsetroot -fill ${wal:=$_getdef} -blur ${blur}
+
     else
         hsetroot -fill ${wal:=$_getdef} -blur 4
     fi

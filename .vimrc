@@ -16,7 +16,8 @@ set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set lazyredraw   " reduce cursor buffers, useful for laggy cursor movement after enabling number/relativenumber
 
-" statusLine
+" statusLine, this was customized for solarized_ext theme, the colors may not
+" work properly with another color scheme
 set laststatus=2 
     " define function
 
@@ -35,7 +36,7 @@ function! GitBranch()
       set statusline+=%#StatusLine#
       set statusline+=\ %f 
       set statusline+=%m\  
-      set statusline+=%#CursorColumn#
+      set statusline+=%#FilEnc#
       set statusline+=%=
       set statusline+=\ %y
       set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
@@ -176,7 +177,7 @@ set foldmethod=manual
 "" Custom Color
 syntax enable
 "let g:solarized_termcolors=256
-colorscheme solarized_dwm
+colorscheme solarized_ext
 
 " work around in case you are using terminal with white/light colored bg in
 " contrast of tty's black bg

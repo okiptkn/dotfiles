@@ -34,6 +34,7 @@ enable syntax highlighting
 vim config and some extra plugin installed with [pathogen](https://github.com/tpope/vim-pathogen). list of currently installed plugin :
 * [NERDtree](https://github.com/scrooloose/nerdtree) : vim file explorer
 * [MRU](https://github.com/vim-scripts/mru.vim)      : list recently opened file
+* [vim-instant-markdown](https://github.com/suan/vim-instant-markdown) : instant preview for markdown(*.md) files
 
 ### LICENSE
 see [LICENSE](LICENSE) for detailed information

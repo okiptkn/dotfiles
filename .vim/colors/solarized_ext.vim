@@ -229,7 +229,7 @@ hi clear
 if exists("syntax_on")
   syntax reset
 endif
-let colors_name = "solarized_dwm"
+let colors_name = "default" " lalala
 
 "}}}
 " GUI & CSApprox hexadecimal palettes"{{{
@@ -282,22 +282,22 @@ elseif (has("gui_running") && g:solarized_degrade == 1)
     let s:green       = "#5f8700"
 elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:vmode       = "cterm"
-    let s:base03      = "8"
-    let s:base02      = "0"
-    let s:base01      = "10"
-    let s:base00      = "11"
-    let s:base0       = "12"
-    let s:base1       = "6"
-    let s:base2       = "7"
-    let s:base3       = "15"
-    let s:yellow      = "3"
-    let s:orange      = "9"
-    let s:red         = "1"
-    let s:magenta     = "10"     " limo
-    let s:violet      = "14"     " telulas
-    let s:blue        = "4"
-    let s:cyan        = "10"
-    let s:green       = "2"
+    let s:base03      = "0"        
+    let s:base02      = "0"         
+    let s:base01      = "4"  " 12     
+    let s:base00      = "1"  " 9      
+    let s:base0       = "2"  " 10       
+    let s:base1       = "6"  " 14
+    let s:base2       = "7"  " 15   
+    let s:base3       = "2"       
+    let s:yellow      = "1"        
+    let s:orange      = "1"  " 11        
+    let s:red         = "2"       
+    let s:magenta     = "5"         
+    let s:violet      = "5"  " 13        
+    let s:blue        = "7"         
+    let s:cyan        = "6"         
+    let s:green       = "1"         
 elseif g:solarized_termcolors == 256
     let s:vmode       = "cterm"
     let s:base03      = "234"
@@ -609,8 +609,8 @@ else
     exe "hi! SpecialKey" .s:fmt_bold   .s:fg_base00 .s:bg_base02
     exe "hi! NonText"    .s:fmt_bold   .s:fg_base00 .s:bg_none
 endif
-exe "hi! StatusLine"     .s:fmt_none   .s:fg_base1  .s:bg_base02 .s:fmt_revbb
-exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_base00 .s:bg_base02 .s:fmt_revb
+exe "hi! StatusLine"     .s:fmt_none   .s:fg_magenta.s:bg_base02 .s:fmt_revbb
+exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_yellow .s:bg_base02 .s:fmt_revb
 exe "hi! gitshit"        .s:fmt_none   .s:fg_base2  .s:bg_base02 .s:fmt_revb
 exe "hi! Visual"         .s:fmt_none   .s:fg_base01 .s:bg_base03 .s:fmt_revbb
 exe "hi! Directory"      .s:fmt_none   .s:fg_blue   .s:bg_none
@@ -619,8 +619,8 @@ exe "hi! IncSearch"      .s:fmt_stnd   .s:fg_orange .s:bg_none
 exe "hi! Search"         .s:fmt_revr   .s:fg_yellow .s:bg_none
 exe "hi! MoreMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! ModeMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
-exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_base02
-exe "hi! CursorLineNr"   .s:fmt_none   .s:fg_base0  .s:bg_base02
+exe "hi! LineNr"         .s:fmt_none   .s:fg_base2  .s:bg_base02
+exe "hi! CursorLineNr"   .s:fmt_none   .s:fg_red    .s:bg_base02
 exe "hi! Question"       .s:fmt_bold   .s:fg_cyan   .s:bg_none
 if ( has("gui_running") || &t_Co > 8 )
     exe "hi! VertSplit"  .s:fmt_none   .s:fg_base00 .s:bg_base00
@@ -666,13 +666,12 @@ exe "hi! Pmenu"          .s:fmt_none   .s:fg_base0  .s:bg_base02  .s:fmt_revbb
 exe "hi! PmenuSel"       .s:fmt_none   .s:fg_base01 .s:bg_base2   .s:fmt_revbb
 exe "hi! PmenuSbar"      .s:fmt_none   .s:fg_base2  .s:bg_base0   .s:fmt_revbb
 exe "hi! PmenuThumb"     .s:fmt_none   .s:fg_base0  .s:bg_base03  .s:fmt_revbb
-exe "hi! TabLine"        .s:fmt_none   .s:fg_base02  .s:bg_base0  .s:sp_base02
-exe "hi! TabLineFill"    .s:fmt_none   .s:fg_base0  .s:bg_base02  .s:sp_base0
-exe "hi! TabLineSel"     .s:fmt_none   .s:fg_base2  .s:bg_base02  .s:sp_base01  .s:fmt_revbb
-exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_base02
+exe "hi! TabLine"        .s:fmt_undr   .s:fg_base0  .s:bg_base02  .s:sp_base0
+exe "hi! TabLineFill"    .s:fmt_undr   .s:fg_base0  .s:bg_base02  .s:sp_base0
+exe "hi! TabLineSel"     .s:fmt_undr   .s:fg_base01 .s:bg_base2   .s:sp_base0  .s:fmt_revbb
+exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none  .s:bg_base02
+exe "hi! FilEnc"         .s:fmt_none   .s:fg_base2  .s:bg_base02
 exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_base02  .s:sp_base1
-exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base02
-exe "hi! Cursor"         .s:fmt_none   .s:fg_base03 .s:bg_base0
 hi! link lCursor Cursor
 exe "hi! MatchParen"     .s:fmt_bold   .s:fg_red    .s:bg_base01
 

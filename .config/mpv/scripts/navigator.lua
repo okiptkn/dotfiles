@@ -5,13 +5,14 @@
 -- URL: https://github.com/donmaiq/mpv-filenavigator
 --
 local settings = {
-  defaultpath = "/", --fallback if no file is open
+  --fallback if no file is open, should be a string that points to a path in your system
+  defaultpath = os.getenv("HOME") or "/",
   forcedefault = false, --force navigation to start from defaultpath instead of currently playing file
   --favorites in format { 'Path to directory, notice trailing /' }
-  favorites =  {
-    '/home/okiptkn/Videos',
-    '/home/okiptkn/Downloads/',
-    '/home/okiptkn/Music',
+  favorites = {
+    '/media/HDD2/music/music/',
+    '/media/HDD/users/anon/Downloads/',
+    '/home/anon/',
   },
   --list of paths to ignore. the value is anything that returns true for if-statement.
   --directory ignore entries must end with a trailing slash,
@@ -104,12 +105,14 @@ function handler(arg)
   for a=b,(b+settings.osd_items_per_screen),1 do
     if a==length then break end
     if a == cursor then
-      output = output.."> "..dir[a].." <"
-      if arg == "added" then output = output.." + added to playlist\n"
-      elseif arg == "removed" then output = output.." - removed previous addition\n" else output=output.."\n" end
+      entry="> "..dir[a].." <"
+      if arg == "added" then entry = entry .." + added to playlist\n"
+      elseif arg == "removed" then entry = entry.." - removed previous addition\n" else entry=entry.."\n" end
     else
-      output = output..dir[a].."\n"
+      entry="  "..dir[a].."  \n"
     end
+    entry=string.gsub(entry, " ", "\160")
+    output = output..entry
     if a == (b+settings.osd_items_per_screen) then
       output=output.."..."
     end
